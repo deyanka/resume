@@ -26,13 +26,11 @@ jobs:
           name: resume
           path: CV/main.pdf
 
-      - name: uploading for pages to public repo
+      - name: uploading for pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.TOKEN }}
-          external_repository: deyanka/cv-publish
-          publish_dir: ./CV
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
+          publish_dir: ./CV
           destination_dir: cv
-          user_name: deyanka
-          user_email: deyanka@example.com
+          keep_files: true
