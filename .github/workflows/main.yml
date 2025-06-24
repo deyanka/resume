@@ -26,11 +26,3 @@ jobs:
           name: resume
           path: CV/main.pdf
 
-      - name: uploading for pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./CV
-          destination_dir: cv
-          keep_files: true
