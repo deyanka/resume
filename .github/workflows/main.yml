@@ -1,0 +1,27 @@
+name: CV CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: run build docker image
+        run: docker build -t resume .
+
+      - name: run build in container
+        run: docker run -v ${{ github.workspace }}:/workspace resume
+
+      - name: upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume
+          path: CV/main.pdf
